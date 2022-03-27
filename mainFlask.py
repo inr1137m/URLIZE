@@ -51,5 +51,5 @@ if __name__ == '__main__':
     # app.run(host,port,debug,load_dotenv,options)
     app.secret_key=sec_key
     # app.debug=debug_mode
-    app.run(host, port, debug_mode)
-    # serve(app, host='0.0.0.0', port=5000, threads=2, clear_untrusted_proxy_headers=True)
+    # app.run(host, port, debug_mode)
+    serve(app, host=host, port=port, threads=2, clear_untrusted_proxy_headers=True)
