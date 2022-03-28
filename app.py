@@ -52,5 +52,5 @@ if __name__ == '__main__':
     # app.run(host,port,debug,load_dotenv,options)
     # app.secret_key="IamtheBoss@143"
     application.debug=False
-    application.run()
+    application.run(port=8081)
     # serve(app, host=host, port=port, threads=2, clear_untrusted_proxy_headers=True)
