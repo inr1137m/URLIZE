@@ -51,6 +51,6 @@ if __name__ == '__main__':
     # print('ENVs : ', ','.join([host,str(port), str(debug_mode)]))
     # app.run(host,port,debug,load_dotenv,options)
     # app.secret_key="IamtheBoss@143"
-    application.debug=False
+    application.debug=True
     application.run()
     # serve(app, host=host, port=port, threads=2, clear_untrusted_proxy_headers=True)
