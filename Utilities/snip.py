@@ -30,7 +30,8 @@ def takeSnip(url):
         # driver.set_window_size(w, h)
         # sleep(1)
         e1 = driver.find_element_by_tag_name('body')
-        imgBin = e1.screenshot_as_png()
+        imgBin = e1.screenshot_as_base64()
+        print("result : {}".format(imgBin[:15]))
         # driver.set_window_size(s['width'], s['height'])
         driver.quit()
         
