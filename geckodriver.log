@@ -1,0 +1,11 @@
+1648440896929	geckodriver	INFO	Listening on 127.0.0.1:48569
+1648440897438	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "42067" "-no-remote" "-profile" "/tmp/rust_mozprofilexJ1k0V"
+*** You are running in headless mode.
+1648440899777	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilexJ1k0V/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:42067/devtools/browser/fcdf1ccd-d5e0-4a10-8d8e-cd54efcc8f9e
+1648440904484	Marionette	INFO	Listening on port 36495
+1648440904708	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1648440910878	Marionette	INFO	Stopped listening on port 36495
+JavaScript error: resource://gre/modules/UrlClassifierListManager.jsm, line 691: TypeError: this.tablesData[table] is undefined

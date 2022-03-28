@@ -6,7 +6,7 @@ from selenium.webdriver.firefox.options import Options
 
 screen_width = 1024
 screen_height = 768
-FFdriver = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))),'drivers','geckodriver.exe') #Options()
+FFdriver = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))),'drivers','geckodriver') #Options()
 options = Options()
 options.add_argument("--headless")
 
