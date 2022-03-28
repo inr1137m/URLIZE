@@ -17,7 +17,7 @@ CORS(application)
 #routes
 @application.route('/')
 def rootFunc():
-    return Response("{'status':'running'}", status=200, content_type='application/json')
+    return Response("{'status':'running-1'}", status=200, content_type='application/json')
 
 @application.route('/url', methods=['POST'])
 def analyzeUrl():
