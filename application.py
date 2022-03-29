@@ -1,15 +1,8 @@
-from email.mime import application
 from flask import Flask, Response, request # redirect, url_for , render_template
 from flask_cors import CORS
-# from waitress import serve
-# from dotenv import load_dotenv
-# import os
-# load_dotenv()
-
-# from .Utilities import snip
-from Utilities import urlize
-from Utilities import snip
 import time
+import requests, validators, json
+from simplified_scrapy.simplified_doc import SimplifiedDoc 
 
 application = Flask(__name__)
 CORS(application)
@@ -22,25 +15,21 @@ def rootFunc():
 @application.route('/url', methods=['POST'])
 def analyzeUrl():
     if request.method == 'POST':
-        urlist, statuscode = urlize.fetchUrls(request.form['urlVal'],0)
+        urlist, statuscode = fetchUrls(request.form['urlVal'],0)
         return Response(urlist, status=statuscode, content_type='application/json') #, headers={'Access-Control-Allow-Origin':'*'}
 
-@application.route('/snip', methods=['GET'])
-def screenSnip():
-    if request.method == 'GET':
-    #     imgBinary , statuscode = snip.takeSnip(request.form['urlVal'])
-    #     return Response(imgBinary, status=statuscode, content_type='image/png') #, headers={'Access-Control-Allow-Origin':'*'}
-    # else:
-        iurl = request.args.get('url', default="empty", type=str)
-        ifname = "SnipApp-"+str(int(time.time()))+".png"
-        imgBinary , statuscode = snip.takeSnip(iurl)
-        if statuscode == 200:
-            return Response(imgBinary, status=statuscode,
-            headers = {
-                'content-Disposition':'attachment; filename='+ifname},
-                content_type='image/png') #, headers={'Access-Control-Allow-Origin':'*'}
-        else :
-            return Response(imgBinary, status=statuscode, content_type='application/json')
+
+def fetchUrls(urlv, depth=0, n=-1):
+    try:
+        validators.url(urlv) #url validation
+        source_code = requests.get(urlv) #fetch site source
+        # print(source_code.content)
+        doc = SimplifiedDoc(source_code.content.decode('unicode_escape').strip()) # incoming HTML string
+        print(urlv)
+        lst = doc.listA(url=urlv) # get all links... print(lst[:-1][3]['url'])
+        return json.dumps(lst[:n]), 200
+    except Exception as e:
+        return "Exception : {}".format(e), 400
 
 #main function
 if __name__ == '__main__':
