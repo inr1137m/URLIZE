@@ -21,6 +21,16 @@ def analyzeUrl():
 
 def fetchUrls(urlv, depth=0, n=-1):
     try:
+        x = urlv.lower()
+        if(x.startswith("https://") or x.startswith("http://")):
+            urlv = x
+        else:
+            url1 = "https://"+x
+            url2 = "http://"+x
+            if(validators.url(url1)):
+                urlv = url1
+            else:
+                urlv = url2
         validators.url(urlv) #url validation
         source_code = requests.get(urlv) #fetch site source
         # print(source_code.content)
